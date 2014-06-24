@@ -48,11 +48,11 @@ class Made_Dibs_Model_Observer
      */
     public function cancelOldPendingGatewayOrders($observer)
     {
-        $hoursUntilCancelled = 3;
+        $hoursUntilCancelled = 1;
         $date = date('Y-m-d H:i:s', strtotime("-$hoursUntilCancelled hour"));
         $orderCollection = Mage::getModel('sales/order')
                 ->getCollection()
-                ->addFieldToFilter('state', 'payment_review')
+                ->addFieldToFilter('status', 'pending_payment')
                 ->addAttributeToFilter('created_at', array('lt' => $date));
 
         foreach ($orderCollection as $order) {
