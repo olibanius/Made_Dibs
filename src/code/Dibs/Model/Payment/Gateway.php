@@ -251,10 +251,12 @@ class Made_Dibs_Model_Payment_Gateway extends Made_Dibs_Model_Payment_Abstract
             return false;
         }
 
+        /*
         $userAgent = Mage::helper('core/http')->getHttpUserAgent();
         if (preg_match('#(iPhone|iPad).*Version/8\.[0-9]#', $userAgent)) {
             return false;
         }
+        */
 
         return true;
     }
