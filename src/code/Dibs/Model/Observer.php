@@ -67,8 +67,8 @@ class Made_Dibs_Model_Observer
                 continue;
             }
 
-            $order->cancel();
-            $order->addStatusHistoryComment("The order was automatically cancelled due to more than $hoursUntilCancelled hours of gateway inactivity.");
+            $order->hold();
+            $order->addStatusHistoryComment("The order was automatically set ON HOLD due to more than $hoursUntilCancelled hours of gateway inactivity.");
             $order->save();
         }
     }
